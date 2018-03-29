@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   return (
-    <input type='text' placeholder='Search GIFs'/>
+    <input type='text' placeholder='Search GIFs' onChange={props.fetchGiphy}/>
   )
 }
 
