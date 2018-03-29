@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchBar = () => {
   return (
-    <input type='submit' placeholder='Search GIFs'/>
+    <input type='text' placeholder='Search GIFs'/>
   )
 }
 
