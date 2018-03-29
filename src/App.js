@@ -3,16 +3,39 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      gifs: [],
+      searchedWord: 'Italy'
+    }
+  }
+
+  componentDidMount() {
+    this.fetchGiphy()
+  }
+
+  fetchGiphy = () => {
+    fetch(`https://api.giphy.com/v1/gifs/search?api_key=fvJXlCTHXqHZEjYzt5746FDrQwbWpcSR&q=${this.state.searchedWord}&limit=25&offset=0&rating=G&lang=en`)
+    .then(results => {
+      return results.json();
+    }).then(data => {
+      console.log(data, 'DATA RESULTS')
+      let gifs = data.data.map((gif) => {
+        return (
+          <div key={gif.id}>
+            <iframe src={gif.embed_url} alt={gif.title} width="480" height="270" frameBorder="0"></iframe>
+          </div>
+        )
+      })
+      this.setState({gifs: gifs});
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        {this.state.gifs}
       </div>
     );
   }
