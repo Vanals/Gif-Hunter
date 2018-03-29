@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import SearchBar from './components/SearchBar';
 
 class App extends Component {
   constructor() {
@@ -11,6 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // this.fetchGiphy()
   }
 
   fetchGiphy = () => {
@@ -33,6 +35,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <SearchBar />
         {this.state.gifs}
       </div>
     );
