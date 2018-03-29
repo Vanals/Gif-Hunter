@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
+import GifFeed from './components/GifFeed';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       gifs: [],
-      searchedWord: 'Italy'
     }
   }
 
-  componentDidMount() {
-    // this.fetchGiphy()
-  }
-
-  fetchGiphy = () => {
-    fetch(`https://api.giphy.com/v1/gifs/search?api_key=fvJXlCTHXqHZEjYzt5746FDrQwbWpcSR&q=${this.state.searchedWord}&limit=25&offset=0&rating=G&lang=en`)
+  fetchGiphy = (event) => {
+    fetch(`https://api.giphy.com/v1/gifs/search?api_key=fvJXlCTHXqHZEjYzt5746FDrQwbWpcSR&q=${event.target.value}&limit=25&offset=0&rating=G&lang=en`)
     .then(results => {
       return results.json();
     }).then(data => {
@@ -24,7 +20,7 @@ class App extends Component {
       let gifs = data.data.map((gif) => {
         return (
           <div key={gif.id}>
-            <iframe src={gif.embed_url} alt={gif.title} width="480" height="270" frameBorder="0"></iframe>
+          <GifFeed id={gif.id} embed_url={gif.embed_url} title={gif.title}/>
           </div>
         )
       })
@@ -35,7 +31,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <SearchBar />
+        <SearchBar fetchGiphy={this.fetchGiphy}/>
         {this.state.gifs}
       </div>
     );
