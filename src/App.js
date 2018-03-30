@@ -31,6 +31,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h4>Giphy Search</h4>
         <SearchBar fetchGiphy={this.fetchGiphy}/>
         {this.state.gifs}
       </div>
