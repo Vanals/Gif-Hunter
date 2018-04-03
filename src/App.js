@@ -20,7 +20,7 @@ class App extends Component {
       let gifs = data.data.map((gif) => {
         return (
           <div key={gif.id}>
-          <GifFeed id={gif.id} embed_url={gif.embed_url} title={gif.title}/>
+            <GifFeed id={gif.id} embed_url={gif.embed_url} title={gif.title}/>
           </div>
         )
       })
@@ -33,7 +33,7 @@ class App extends Component {
       <div>
         <h4>Giphy Search</h4>
         <SearchBar fetchGiphy={this.fetchGiphy}/>
-        {this.state.gifs}
+        {this.state.gifs.slice(0, 10)}
       </div>
     );
   }
