@@ -7,8 +7,10 @@ describe('App Component', () => {
   /// Mock fetchGiphy ??
 
   let wrapper
+  let wrapperInstance
   beforeEach(function() {
     wrapper = shallow(<App />)
+    wrapperInstance = wrapper.instance()
   });
 
   it('renders without crashing', () => {
@@ -20,7 +22,13 @@ describe('App Component', () => {
   });
 
   it('find NextButton component', () => {
+    wrapper.setState({gifs: [1,2,3,4,5,6,7,8,9,10,11]})
     expect(wrapper.find('NextButton').length).toEqual(1)
+  });
+
+  it('Next button component shouldn\'t be rendered', () => {
+    wrapper.setState({gifs: [1,2,3,4,5,6,7,8,9,10]})
+    expect(wrapper.find('NextButton').length).toEqual(0)
   });
 
 })

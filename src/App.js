@@ -35,6 +35,11 @@ class App extends Component {
     return this.state.gifs.slice(start, end)
   }
 
+  nextPage = () => {
+    let increasedSliced = this.state.gifSlice.map(n => n + 10)
+    this.setState({gifSlice: increasedSliced})
+  }
+
   render() {
     return (
       <div>
@@ -42,7 +47,10 @@ class App extends Component {
         <SearchBar fetchGiphy={this.fetchGiphy}/>
 
         {this.gifSlice(this.state.gifSlice[0], this.state.gifSlice[1])}
-        <NextButton />
+
+        { (this.state.gifs.length > this.state.gifSlice[1]) &&
+          <NextButton nextPage={this.nextPage} />
+        }
 
       </div>
     );

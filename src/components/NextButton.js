@@ -3,7 +3,7 @@ import Radium from 'radium';
 
 const NextButton = (props) => {
   return (
-      <input style={NextButtonStyle} type='submit' value='Next Page' />
+      <input style={NextButtonStyle} type='submit' value='Next Page' onClick={props.nextPage} />
   )
 }
 
