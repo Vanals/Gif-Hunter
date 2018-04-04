@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import GifFeed from './components/GifFeed';
+import NextButton from './components/NextButton';
 
 class App extends Component {
   constructor() {
@@ -41,8 +42,8 @@ class App extends Component {
         <SearchBar fetchGiphy={this.fetchGiphy}/>
 
         {this.gifSlice(this.state.gifSlice[0], this.state.gifSlice[1])}
+        <NextButton />
 
-        
       </div>
     );
   }

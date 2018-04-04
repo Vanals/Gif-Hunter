@@ -15,8 +15,12 @@ describe('App Component', () => {
     shallow(<App />);
   });
 
-  it('find input tag', () => {
+  it('find SearchBar Component', () => {
     expect(wrapper.find('SearchBar').length).toEqual(1)
+  });
+
+  it('find NextButton component', () => {
+    expect(wrapper.find('NextButton').length).toEqual(1)
   });
 
 })
