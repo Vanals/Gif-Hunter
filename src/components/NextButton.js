@@ -1,9 +1,16 @@
 import React from 'react';
+import Radium from 'radium';
 
 const NextButton = (props) => {
   return (
-      <input type='submit' value='Next Page' />
+      <input style={NextButtonStyle} type='submit' value='Next Page' />
   )
 }
 
-export default NextButton;
+const NextButtonStyle = {
+  ':hover': {
+    color: 'rgb(44, 123, 201)',
+  }
+}
+
+export default Radium(NextButton);
