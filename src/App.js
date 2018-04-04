@@ -8,6 +8,7 @@ class App extends Component {
     super();
     this.state = {
       gifs: [],
+      gifSlice: [0, 10],
     }
   }
 
@@ -28,12 +29,20 @@ class App extends Component {
     })
   }
 
+
+  gifSlice = (start, end) => {
+    return this.state.gifs.slice(start, end)
+  }
+
   render() {
     return (
       <div>
         <h4>Giphy Search</h4>
         <SearchBar fetchGiphy={this.fetchGiphy}/>
-        {this.state.gifs.slice(0, 10)}
+
+        {this.gifSlice(this.state.gifSlice[0], this.state.gifSlice[1])}
+
+        
       </div>
     );
   }
