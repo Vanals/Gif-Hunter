@@ -13,7 +13,7 @@ describe('GifFeed Component', () => {
     wrapper;
   });
 
-  it('find input tag', () => {
+  it('find iframe tag', () => {
     expect(wrapper.find('iframe').length).toEqual(1)
   });
 
