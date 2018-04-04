@@ -31,4 +31,21 @@ describe('App Component', () => {
     expect(wrapper.find('NextButton').length).toEqual(0)
   });
 
+  describe('#nextPage', () => {
+    it('increase the gifSlice values by 10', () => {
+      wrapperInstance.nextPage()
+      expect(wrapperInstance.state.gifSlice[0]).toEqual(10)
+      expect(wrapperInstance.state.gifSlice[1]).toEqual(20)
+    });
+  })
+
+  describe('#previousPage', () => {
+    it('increase the gifSlice values by 10', () => {
+      wrapperInstance.previousPage()
+      expect(wrapperInstance.state.gifSlice[0]).toEqual(-10)
+      expect(wrapperInstance.state.gifSlice[1]).toEqual(0)
+    });
+  })
+
+
 })

@@ -36,8 +36,13 @@ class App extends Component {
   }
 
   nextPage = () => {
-    let increasedSliced = this.state.gifSlice.map(n => n + 10)
-    this.setState({gifSlice: increasedSliced})
+    let increasedSlice = this.state.gifSlice.map(n => n + 10)
+    this.setState({gifSlice: increasedSlice})
+  }
+
+  previousPage = () => {
+    let decreasedSlice = this.state.gifSlice.map(n => n - 10)
+    this.setState({gifSlice: decreasedSlice})
   }
 
   render() {
