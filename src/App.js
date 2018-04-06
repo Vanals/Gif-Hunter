@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import GifFeed from './components/GifFeed';
-import NextButton from './components/NextButton';
-import PreviousButton from './components/PreviousButton';
 
 class App extends Component {
   constructor() {
@@ -54,19 +52,25 @@ class App extends Component {
 
         {this.gifSlice(this.state.gifSlice[0], this.state.gifSlice[1])}
 
+
+
         { (this.state.gifSlice[0] > 0) &&
-          <PreviousButton previousPage={this.previousPage}  />
+          <input style={PreviousNextButtonStyle} type='submit' value='Previous Page' onClick={this.previousPage} />
         }
-
         { (this.state.gifs.length > this.state.gifSlice[1]) &&
-          <NextButton nextPage={this.nextPage} />
+          <input style={PreviousNextButtonStyle} type='submit' value='Next Page' onClick={this.nextPage} />
         }
-
-
 
       </div>
     );
   }
 }
+
+const PreviousNextButtonStyle = {
+  ':hover': {
+    color: 'rgb(44, 123, 201)',
+  }
+}
+
 
 export default App;
