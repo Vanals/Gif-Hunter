@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import GifFeed from './components/GifFeed';
+import PagesManager from './components/PagesManager';
 import Radium from 'radium';
 
 class App extends Component {
@@ -19,7 +20,6 @@ class App extends Component {
     .then(results => {
       return results.json();
     }).then(data => {
-      console.log(data, 'DATA RESULTS')
       let gifs = data.data.map((gif) => {
         return (
           <div key={gif.id}>
@@ -44,7 +44,8 @@ class App extends Component {
 
   previousPage = () => {
     let decreasedSlice = this.state.gifSlice.map(n => n - 10)
-    this.setState({gifSlice: decreasedSlice})
+    let currentPage = this.state.page - 1
+    this.setState({gifSlice: decreasedSlice, page: currentPage})
   }
 
   disablePreviousButtonsChecker = () => {
@@ -68,20 +69,14 @@ class App extends Component {
         <SearchBar fetchGiphy={this.fetchGiphy}/>
 
         {this.gifSlice(this.state.gifSlice[0], this.state.gifSlice[1])}
-        
-        <div style={ButtonsPageStyle}>
-          <div>
-            <input key="NextButton" style={PreviousButtonStyle} type='submit' value='Previous Page' onClick={this.previousPage} disabled={disablePreviousButton} />
-          </div>
 
-          <div>
-            <p style={PageIndicatorStyle}> Page: {this.state.page} </p>
-          </div>
-
-          <div>
-            <input key="PreviousButton" style={NextButtonStyle} type='submit' value='Next Page' onClick={this.nextPage} disabled={disableNextButton}/>
-          </div>
-        </div>
+        <PagesManager
+          previousPage={this.previousPage}
+          nextPage={this.nextPage}
+          disablePreviousButton={disablePreviousButton}
+          disableNextButton={disableNextButton}
+          page={this.state.page}
+        />
 
 
       </div>
@@ -91,28 +86,6 @@ class App extends Component {
 
 const appDivStyle = {
   marginLeft: '10px',
-}
-
-const ButtonsPageStyle = {
-  display:'flex',
-}
-
-const PageIndicatorStyle = {
-  marginTop: '0px',
-}
-
-const PreviousButtonStyle = {
-  marginRight: '10px',
-  ':hover': {
-    color: 'rgb(44, 123, 201)',
-  }
-}
-
-const NextButtonStyle = {
-  marginLeft: '10px',
-  ':hover': {
-    color: 'rgb(44, 123, 201)',
-  }
 }
 
 export default Radium(App);
