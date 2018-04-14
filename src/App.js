@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
+
 import GifFeed from './components/GifFeed';
 import PagesManager from './components/PagesManager';
 import Radium from 'radium';
@@ -65,27 +66,58 @@ class App extends Component {
 
     return (
       <div style={appDivStyle}>
-        <h4>Giphy Search</h4>
-        <SearchBar fetchGiphy={this.fetchGiphy}/>
 
-        {this.gifSlice(this.state.gifSlice[0], this.state.gifSlice[1])}
+        <div style={searchAreaStyle}>
+            <h1>Giphy Search</h1>
+          <div>
+            <SearchBar fetchGiphy={this.fetchGiphy}/>
+          </div>
 
-        <PagesManager
-          previousPage={this.previousPage}
-          nextPage={this.nextPage}
-          disablePreviousButton={disablePreviousButton}
-          disableNextButton={disableNextButton}
-          page={this.state.page}
-        />
 
+
+        </div>
+
+
+        <div style={gifsSliceStyle}>
+          {this.gifSlice(this.state.gifSlice[0], this.state.gifSlice[1])}
+        </div>
+
+        <div style={PagesManagerStyle}>
+          <PagesManager
+            previousPage={this.previousPage}
+            nextPage={this.nextPage}
+            disablePreviousButton={disablePreviousButton}
+            disableNextButton={disableNextButton}
+            page={this.state.page}
+          />
+        </div>
 
       </div>
     );
   }
 }
 
+
+const searchAreaStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'column',
+}
+
 const appDivStyle = {
   marginLeft: '10px',
+}
+
+const gifsSliceStyle = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  marginTop: '30px',
+}
+
+const PagesManagerStyle = {
+  display: 'flex',
+  justifyContent: 'center',
 }
 
 export default Radium(App);

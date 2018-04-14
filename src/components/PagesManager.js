@@ -2,7 +2,7 @@ import React from 'react';
 
 const PagesManager = (props) => {
   return (
-    <div style={ButtonsPageStyle}>
+    <div style={ButtonsPageStyleDiv}>
       <div>
         <input key="PreviousButton" style={PreviousButtonStyle} type='submit' value='Previous Page' onClick={props.previousPage} disabled={props.disablePreviousButton} />
       </div>
@@ -18,16 +18,24 @@ const PagesManager = (props) => {
   )
 }
 
-const ButtonsPageStyle = {
+const ButtonsPageStyleDiv = {
   display:'flex',
+  marginTop: '20px',
 }
 
 const PageIndicatorStyle = {
   marginTop: '0px',
+  fontSize: '20px',
+  fontWeight: 'bold',
 }
 
 const PreviousButtonStyle = {
   marginRight: '10px',
+  outline: 'none',
+  width: '150px',
+  height: '30px',
+  fontSize: '20px',
+  fontWeight: 'bold',
   ':hover': {
     color: 'rgb(44, 123, 201)',
   }
@@ -35,6 +43,11 @@ const PreviousButtonStyle = {
 
 const NextButtonStyle = {
   marginLeft: '10px',
+  outline: 'none',
+  width: '150px',
+  height: '30px',
+  fontSize: '20px',
+  fontWeight: 'bold',
   ':hover': {
     color: 'rgb(44, 123, 201)',
   }
