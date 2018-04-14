@@ -35,8 +35,9 @@ class App extends Component {
           </div>
         )
       })
-      this.setState({gifs: gifs, gifsData: data.data});
+      this.setState({gifs: gifs, gifsData: data.data, });
     })
+    this.resetResearch()
   }
 
   selectGifHandler = (position) => {
@@ -59,6 +60,10 @@ class App extends Component {
     let currentPage = this.state.page + 1
     this.setState({gifSlice: increasedSlice, page: currentPage})
     this.scrollTop()
+  }
+
+  resetResearch = () => {
+    this.setState({gifSlice: [0, 10], page: 1})
   }
 
   scrollTop = () => {
