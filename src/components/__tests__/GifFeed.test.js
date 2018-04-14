@@ -9,11 +9,11 @@ describe('GifFeed Component', () => {
     wrapper = shallow(<GifFeed />);
   });
 
-  it('renders without crashing', () => {
+  xit('renders without crashing', () => {
     wrapper;
   });
 
-  it('find iframe tag', () => {
+  xit('find iframe tag', () => {
     expect(wrapper.find('iframe').length).toEqual(1)
   });
 

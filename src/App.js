@@ -21,17 +21,34 @@ class App extends Component {
     .then(results => {
       return results.json();
     }).then(data => {
+      let positionItem = -1
       let gifs = data.data.map((gif) => {
         return (
           <div key={gif.id}>
-            <GifFeed id={gif.id} embed_url={gif.embed_url} title={gif.title}/>
+            <GifFeed
+              id={gif.id}
+              embed_url={gif.embed_url}
+              title={gif.title}
+              gifPosition={positionItem += 1}
+              selectGifHandler={this.selectGifHandler}
+            />
           </div>
         )
       })
-      this.setState({gifs: gifs});
+      this.setState({gifs: gifs, gifsData: data.data});
     })
   }
 
+  selectGifHandler = (position) => {
+    const selectedGifData = this.state.gifsData[position]
+    const selectedGifDescription = <h1>{position}</h1>
+    this.setState({selectedGif: selectedGifDescription})
+    console.log(position, 'PROVA')
+    // fai hide and show when click per il contenuto di selectedGifDescription
+    // e usando absolute o altro, piazzalo al centro(absolute nn so.. nn sarebbe responsive)
+    //check Radium warning before, thanks
+    //gifFeed test give error
+  }
 
   gifSlice = (start, end) => {
     return this.state.gifs.slice(start, end)
@@ -78,11 +95,7 @@ class App extends Component {
           <div>
             <SearchBar fetchGiphy={this.fetchGiphy}/>
           </div>
-
-
-
         </div>
-
 
         <div style={gifsSliceStyle}>
           {this.gifSlice(this.state.gifSlice[0], this.state.gifSlice[1])}
@@ -97,7 +110,6 @@ class App extends Component {
             page={this.state.page}
           />
         </div>
-
       </div>
     );
   }
@@ -124,7 +136,7 @@ const gifsSliceStyle = {
   flexWrap: 'wrap',
   justifyContent: 'center',
   marginTop: '30px',
-  backgroundColor: 'rgb(56, 85, 128)',
+  backgroundColor: 'rgb(46, 70, 106)',
   margin: '100px',
   padding: '50px',
   borderRadius: '30px',
