@@ -41,12 +41,18 @@ class App extends Component {
     let increasedSlice = this.state.gifSlice.map(n => n + 10)
     let currentPage = this.state.page + 1
     this.setState({gifSlice: increasedSlice, page: currentPage})
+    this.scrollTop()
+  }
+
+  scrollTop = () => {
+    window.scrollTo(0, 0);
   }
 
   previousPage = () => {
     let decreasedSlice = this.state.gifSlice.map(n => n - 10)
     let currentPage = this.state.page - 1
     this.setState({gifSlice: decreasedSlice, page: currentPage})
+    this.scrollTop()
   }
 
   disablePreviousButtonsChecker = () => {
@@ -68,7 +74,7 @@ class App extends Component {
       <div style={appDivStyle}>
 
         <div style={searchAreaStyle}>
-            <h1>Giphy Search</h1>
+            <h1 style={titleStyle}>Giphy Search</h1>
           <div>
             <SearchBar fetchGiphy={this.fetchGiphy}/>
           </div>
@@ -97,6 +103,9 @@ class App extends Component {
   }
 }
 
+const titleStyle = {
+  color: 'rgb(40, 96, 156)',
+}
 
 const searchAreaStyle = {
   display: 'flex',
@@ -105,7 +114,9 @@ const searchAreaStyle = {
 }
 
 const appDivStyle = {
-  marginLeft: '10px',
+  backgroundColor: 'rgb(0, 0, 0)',
+  width: '100vw',
+  height: '100vw',
 }
 
 const gifsSliceStyle = {
@@ -113,6 +124,10 @@ const gifsSliceStyle = {
   flexWrap: 'wrap',
   justifyContent: 'center',
   marginTop: '30px',
+  backgroundColor: 'rgb(56, 85, 128)',
+  margin: '100px',
+  padding: '50px',
+  borderRadius: '30px',
 }
 
 const PagesManagerStyle = {

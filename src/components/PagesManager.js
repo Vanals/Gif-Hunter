@@ -27,6 +27,8 @@ const PageIndicatorStyle = {
   marginTop: '0px',
   fontSize: '20px',
   fontWeight: 'bold',
+  color: 'rgb(239, 179, 25)',
+  fontStyle: 'italic',
 }
 
 const PreviousButtonStyle = {
@@ -36,9 +38,6 @@ const PreviousButtonStyle = {
   height: '30px',
   fontSize: '20px',
   fontWeight: 'bold',
-  ':hover': {
-    color: 'rgb(44, 123, 201)',
-  }
 }
 
 const NextButtonStyle = {
@@ -48,9 +47,6 @@ const NextButtonStyle = {
   height: '30px',
   fontSize: '20px',
   fontWeight: 'bold',
-  ':hover': {
-    color: 'rgb(44, 123, 201)',
-  }
 }
 
 export default PagesManager;
