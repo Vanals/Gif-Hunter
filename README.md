@@ -20,7 +20,7 @@ The first thing I did was to **read the task carefully** to highlight what was r
 
 1) Clone the project
 ```
-git clone git@github.com:Vanals/zZish_test.git
+git clone git@github.com:Vanals/Gif-Hunter.git
 ```
 2) Changes into the project directory on ur computer via Terminal
 ```
