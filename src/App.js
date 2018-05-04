@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import SearchBar from './components/SearchBar';
-
+import Header from './components/Header';
+import GifSelection from './components/GifSelection';
 import GifFeed from './components/GifFeed';
 import PagesManager from './components/PagesManager';
 import Radium from 'radium';
+import {StyleRoot} from 'radium';
 
 class App extends Component {
   constructor() {
@@ -13,6 +14,7 @@ class App extends Component {
       gifs: [],
       gifSlice: [0, 10],
       page: 1,
+      showSelectedGif: false,
     }
   }
 
@@ -26,7 +28,7 @@ class App extends Component {
         return (
           <div key={gif.id}>
             <GifFeed
-              id={gif.id}
+              // id={gif.id} no necessary? is not used in GifFeed
               embed_url={gif.embed_url}
               title={gif.title}
               gifPosition={positionItem += 1}
@@ -35,6 +37,8 @@ class App extends Component {
           </div>
         )
       })
+      // Here I am saving also the GifsData because I am gonna use them when a Gif is selected;
+      // showing all its information.
       this.setState({gifs: gifs, gifsData: data.data, });
     })
     this.resetResearch()
@@ -42,13 +46,16 @@ class App extends Component {
 
   selectGifHandler = (position) => {
     const selectedGifData = this.state.gifsData[position]
-    const selectedGifDescription = <h1>{position}</h1>
-    this.setState({selectedGif: selectedGifDescription})
+    // For the moment I am only passing title. The main struggle is show the div in the correct way in the middle.
+    const gifSelectionComponent = <GifSelection title={selectedGifData.title} />
+    this.setState({selectedGif: gifSelectionComponent, showSelectedGif: true})
     console.log(position, 'PROVA')
+    console.log(this.state.gifsData[position].id, 'PO')
     // fai hide and show when click per il contenuto di selectedGifDescription
     // e usando absolute o altro, piazzalo al centro(absolute nn so.. nn sarebbe responsive)
     //check Radium warning before, thanks
     //gifFeed test give error
+    // se riduci la finestra il div nero non è sufficente in  lunghezza
   }
 
   gifSlice = (start, end) => {
@@ -56,7 +63,10 @@ class App extends Component {
   }
 
   nextPage = () => {
+    // .map create a copy of GifSlice so we are not modifying  direcly the state.
+    // Is good.
     let increasedSlice = this.state.gifSlice.map(n => n + 10)
+    // Here I probably shouldn't modify it like that, but make a copy
     let currentPage = this.state.page + 1
     this.setState({gifSlice: increasedSlice, page: currentPage})
     this.scrollTop()
@@ -92,42 +102,36 @@ class App extends Component {
     let disableNextButton
     disableNextButton = this.disableNextButtonsChecker()
 
+    let selectedGif = this.state.selectedGif
+
     return (
-      <div style={appDivStyle}>
+      <StyleRoot>
+        <div style={appDivStyle}>
 
-        <div style={searchAreaStyle}>
-            <h1 style={titleStyle}>Giphy Search</h1>
-          <div>
-            <SearchBar fetchGiphy={this.fetchGiphy}/>
+          <Header fetchGiphy={this.fetchGiphy}/>
+
+          <div style={gifsSliceStyle}>
+            {this.gifSlice(this.state.gifSlice[0], this.state.gifSlice[1])}
           </div>
-        </div>
 
-        <div style={gifsSliceStyle}>
-          {this.gifSlice(this.state.gifSlice[0], this.state.gifSlice[1])}
-        </div>
+          { this.state.showSelectedGif &&
+            selectedGif
+          }
 
-        <div style={PagesManagerStyle}>
-          <PagesManager
-            previousPage={this.previousPage}
-            nextPage={this.nextPage}
-            disablePreviousButton={disablePreviousButton}
-            disableNextButton={disableNextButton}
-            page={this.state.page}
-          />
+          <div style={PagesManagerStyle}>
+            <PagesManager
+              previousPage={this.previousPage}
+              nextPage={this.nextPage}
+              disablePreviousButton={disablePreviousButton}
+              disableNextButton={disableNextButton}
+              page={this.state.page}
+            />
+          </div>
+
         </div>
-      </div>
+      </StyleRoot>
     );
   }
-}
-
-const titleStyle = {
-  color: 'rgb(40, 96, 156)',
-}
-
-const searchAreaStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  flexDirection: 'column',
 }
 
 const appDivStyle = {

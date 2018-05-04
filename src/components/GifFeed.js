@@ -10,15 +10,18 @@ const SearchBar = (props) => {
             width="480"
             height="270"
             frameBorder="0"
+            title={props.title}
           >
           </iframe>
         </div>
       </div>
   )
 }
+
 const frameDiv = {
   pointerEvents: 'none',
 }
+
 const gifFrameStyle = {
   margin: '5px',
   border: '4px solid rgb(0, 0, 0)',
