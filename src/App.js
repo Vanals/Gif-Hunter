@@ -47,10 +47,15 @@ class App extends Component {
   selectGifHandler = (position) => {
     const selectedGifData = this.state.gifsData[position]
     // For the moment I am only passing title. The main struggle is show the div in the correct way in the middle.
-    const gifSelectionComponent = <GifSelection title={selectedGifData.title} />
+    const gifSelectionComponent = <GifSelection
+      title={selectedGifData.title}
+      embed_url={selectedGifData.embed_url}
+      username={selectedGifData.username}
+      import_datetime={selectedGifData.import_datetime}/>
+
     this.setState({selectedGif: gifSelectionComponent, showSelectedGif: true})
     console.log(position, 'PROVA')
-    console.log(this.state.gifsData[position].id, 'PO')
+    console.log(this.state.gifsData[position], 'PO')
     // fai hide and show when click per il contenuto di selectedGifDescription
     // e usando absolute o altro, piazzalo al centro(absolute nn so.. nn sarebbe responsive)
     //check Radium warning before, thanks
