@@ -51,16 +51,21 @@ class App extends Component {
       title={selectedGifData.title}
       embed_url={selectedGifData.embed_url}
       username={selectedGifData.username}
-      import_datetime={selectedGifData.import_datetime}/>
+      import_datetime={selectedGifData.import_datetime}
+      chooseSelectedGifHandler={this.chooseSelectedGifHandler}
+      />
 
     this.setState({selectedGif: gifSelectionComponent, showSelectedGif: true})
     console.log(position, 'PROVA')
     console.log(this.state.gifsData[position], 'PO')
-    // fai hide and show when click per il contenuto di selectedGifDescription
-    // e usando absolute o altro, piazzalo al centro(absolute nn so.. nn sarebbe responsive)
+
     //check Radium warning before, thanks
-    //gifFeed test give error
     // se riduci la finestra il div nero non è sufficente in  lunghezza
+  }
+
+  chooseSelectedGifHandler = () => {
+    console.log('ciao')
+    this.setState({selectedGif: null, showSelectedGif: false})
   }
 
   gifSlice = (start, end) => {
