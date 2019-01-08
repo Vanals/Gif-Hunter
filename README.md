@@ -1,5 +1,4 @@
-#zZish Test - Marco Vanali
-
+# Giphy Hunter
 ## My Outcome
 
 ![]()
@@ -24,7 +23,7 @@ git clone git@github.com:Vanals/Gif-Hunter.git
 ```
 2) Changes into the project directory on ur computer via Terminal
 ```
-cd zZish_test
+cd Gif-Hunter
 ```
 3) Install the dependencies
 ```
