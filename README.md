@@ -2,7 +2,7 @@
 ## My Outcome
 
 In the home page you will find the rules of the game and the taks given. 
-(The assignments I have worked and finished are followed by a green emoji)
+(The assignments I have worked on and finished are followed by a green emoji)
 
 At the end of the home page you will see two buttons, which will take you to the two main areas of the application.
 
