@@ -15,7 +15,7 @@ The first button will take you to the page where ALL the pokemons cards, of the 
 ![](https://i.ibb.co/sbcxc1V/Screen-Shot-2019-10-03-at-18-08-32.png)
 
 
-The second button will take you to the game page. Which has most of the logic required to make it work.
+The second button will take you to the game page, which has most of the logic required to make it work.
 The main functionalities that I have been implemented are: 
 - Randomly deal 6 cards into _two hands_ 
 OPS! Actually three hands!
@@ -25,7 +25,7 @@ You will find three hardcoded players in the game; Marco, Anthony and Louise. Bu
  - The first player (only the first for now) will be able to select the attribute to play with and the winner will be
 declared in each player's panel.
 
-For now is only possible play the first turn, turn 0, But the turn logic is mostly done and you can already see lots of game funtionalities just landing on the page.
+For now is only possible play the first turn, but the turn logic is mostly done and you can already see lots of game funtionalities just landing on the page and pressing the attributes buttons.
 
 ![](https://i.ibb.co/TgxMZPt/Screen-Shot-2019-10-03-at-18-40-08.png)
 ![](https://i.ibb.co/XbDLGpJ/Screen-Shot-2019-10-03-at-18-56-56.png)
@@ -34,22 +34,18 @@ For now is only possible play the first turn, turn 0, But the turn logic is most
 ### Approach
 
 First of all I have carefully read the game rules and the tasks to be developed.
-I have then set up the working environment ejecting and setting CRA to use decorators with Mobx and installed few other packages like prop-types, react-router.
+I have then set up the working environment ejecting and setting CRA to use decorators with Mobx and installed few other packages like prop-types and react-router.
 
-I have decided to use Mobx as it is the state management library I have been using for the past year and I feel comfortable with. Besides I think I won't have any problems on learning new sate namagement libraries such as Redux.
+I have decided to use Mobx as it is the state management library I have been using for the past year and I feel comfortable with. Besides I think I won't have any problems on learning new sate management libraries such as Redux.
 'prop-types' is a super useful package I daily use and 'react-router' helped me to extend the application to more pages.
 
-Successively I have started with the first tasks, creating a basic PokemonCard component which in short time became part of the PokemonCardsList and PlayerHand components.
+Successively I have started with the first tasks creating a basic PokemonCard component which in short time became part of the PokemonCardsList and PlayerHand components.
 I have styled the JSX using CSS modules and Flexbox.
 
-PURE COMPONENTS.. DO I NEED THEM? IF OBSERVER I SHOULD'T.. DOUBLE CHECK!!!
+The more complicated part was architecting the Pokemon Top Trump game. I had to carefully think about the folder and file structure and how the components and stores would have more or less comunicated. To help me on that I did draw a schema in a paper.
 
-CAN SOME MAIN COMPONENT, BE JUST A FUNCTIONAL COMPONENT?
-
-The more complicated part, I think, architecting the Pokemon Top Trump game. I had to carefully think about the folder and file structure; and how the components and stores would have more or less comunicated. To help me on that I did draw some  schema in a paper.
-
-I could have spent more time testing and making the app more styled but I prefered focuse on the react/javascript 
-I anyway stiled nicely the cards, the back of the cards and used flexbox nicely dispose the html elements.
+I could have spent more time testing and making the app more styled but I prefered focus on the react/javascript functionality.
+I've anyway nicely styled the cards, the back of the cards and used flexbox to nicely dispose the html elements.
 I have also created one basic Jest test for one function of the pokemonTopTrumpsStore.
 
 
