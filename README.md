@@ -30,7 +30,7 @@ declared in each player's panel.
 For now is only possible the first turn, so only the turn 0. But the turn logic is mostly done and you can already see lots of game funtionalities just landing on the page.
 
 ![](https://i.ibb.co/TgxMZPt/Screen-Shot-2019-10-03-at-18-40-08.png)
-![](https://i.ibb.co/WzRn6xs/Screen-Shot-2019-10-03-at-18-40-17.png)
+![](https://i.ibb.co/XbDLGpJ/Screen-Shot-2019-10-03-at-18-56-56.png)
 
 
 ### Approach
